@@ -111,10 +111,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bottomText" destination="4if-p7-w0W" id="w9g-hb-4VC"/>
+                        <outlet property="bottomToolbar" destination="oWy-RO-rmT" id="poU-ox-LcQ"/>
                         <outlet property="imagePickerView" destination="Eiq-9K-gzu" id="kly-iS-vNL"/>
                         <outlet property="shareButton" destination="cQE-FV-var" id="baX-Zx-btv"/>
                         <outlet property="toolbarCameraButton" destination="MeF-dA-NT0" id="j2I-Db-xBG"/>
                         <outlet property="topText" destination="a6v-KV-YJk" id="fDP-he-Spj"/>
+                        <outlet property="topToolbar" destination="1s7-an-mnt" id="INc-3T-MIJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -141,7 +143,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gMN-k6-EJO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-373" y="277"/>
+            <point key="canvasLocation" x="-383" y="383"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="T2F-Rt-Pa7">
@@ -190,7 +192,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.070588235289999995" green="0.074509803920000006" blue="0.078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -220,25 +222,40 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="a1L-o7-Eq8">
-                            <size key="itemSize" width="140" height="139"/>
+                            <size key="itemSize" width="120" height="120"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="IDy-9c-RHh" customClass="MemeCollectionViewCell" customModule="MemeMeApp" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="memeContentCell" id="IDy-9c-RHh" customClass="MemeCollectionViewCell" customModule="MemeMeApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="140" height="139"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nlo-0L-bzp">
-                                            <rect key="frame" x="0.0" y="0.0" width="140" height="139"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nlo-0L-bzp">
+                                            <rect key="frame" x="8" y="8" width="104" height="104"/>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="nlo-0L-bzp" secondAttribute="centerX" constant="-0.5" id="4e4-tY-cZi"/>
+                                    <constraint firstAttribute="centerX" secondItem="nlo-0L-bzp" secondAttribute="centerX" id="4fu-a5-G0w"/>
+                                    <constraint firstAttribute="centerY" secondItem="nlo-0L-bzp" secondAttribute="centerY" constant="0.5" id="Gfi-rg-CCq"/>
+                                    <constraint firstAttribute="centerY" secondItem="nlo-0L-bzp" secondAttribute="centerY" constant="0.5" id="bbk-fz-b6Q"/>
+                                </constraints>
+                                <size key="customSize" width="120" height="120"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="4e4-tY-cZi"/>
+                                        <exclude reference="4fu-a5-G0w"/>
+                                        <exclude reference="Gfi-rg-CCq"/>
+                                        <exclude reference="bbk-fz-b6Q"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <outlet property="imageView" destination="nlo-0L-bzp" id="NBT-2O-FZy"/>
                                 </connections>
@@ -252,6 +269,9 @@
                     <navigationItem key="navigationItem" title="Sent Memes" id="iBA-9B-6D2">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="K3F-7x-3cH">
                             <color key="tintColor" red="0.18039215689999999" green="0.74117647060000003" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="addMeme:" destination="Wxt-g5-M88" id="jC1-3j-Zzg"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </collectionViewController>
@@ -271,11 +291,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oq3-OJ-8DH">
-                                <rect key="frame" x="0.0" y="28" width="600" height="572"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oq3-OJ-8DH">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.1333333333" green="0.13725490200000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Oq3-OJ-8DH" firstAttribute="top" secondItem="lwA-IU-Eol" secondAttribute="bottom" constant="-20" id="7Ag-Ok-nrg"/>
+                            <constraint firstItem="Oq3-OJ-8DH" firstAttribute="leading" secondItem="okU-jI-seu" secondAttribute="leadingMargin" constant="-16" id="Bb8-WZ-F7u"/>
+                            <constraint firstItem="Oq3-OJ-8DH" firstAttribute="width" secondItem="okU-jI-seu" secondAttribute="width" id="biv-J3-3F7"/>
+                            <constraint firstItem="Oq3-OJ-8DH" firstAttribute="height" secondItem="okU-jI-seu" secondAttribute="height" id="pjH-Bb-ifG"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="Oq3-OJ-8DH" id="5ev-Xg-fu5"/>

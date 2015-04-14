@@ -98,11 +98,11 @@
 				97C04E331ADD4D4E00040286 /* MemeTableViewController.swift */,
 				97FCC2321ADC65A700359B2C /* MemeCollectionViewController.swift */,
 				97ABB9AE1ADC7A6000646DF6 /* MemeCollectionViewCell.swift */,
-				979DFF161ADBFF840017C937 /* Main.storyboard */,
-				979DFF191ADBFF840017C937 /* Images.xcassets */,
-				979DFF1B1ADBFF840017C937 /* LaunchScreen.xib */,
-				979DFF101ADBFF840017C937 /* Supporting Files */,
 				97FCC2301ADC541D00359B2C /* Meme.swift */,
+				979DFF161ADBFF840017C937 /* Main.storyboard */,
+				979DFF1B1ADBFF840017C937 /* LaunchScreen.xib */,
+				979DFF191ADBFF840017C937 /* Images.xcassets */,
+				979DFF101ADBFF840017C937 /* Supporting Files */,
 			);
 			path = MemeMeApp;
 			sourceTree = "<group>";

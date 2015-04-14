@@ -13,7 +13,7 @@ class MemeDetailViewController: UIViewController {
     
     // MARK: -
     // MARK: Properties
-    var meme: Meme?
+    var meme: Meme!
     
     // MARK: -
     // MARK: Outlets
@@ -23,5 +23,9 @@ class MemeDetailViewController: UIViewController {
     // MARK: View's Life Cycle
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        self.imageView.image = meme.memedImage
+        self.tabBarController?.tabBar.hidden = true
+        self.navigationController?.navigationBar.tintColor = UIColor(red: 46/255, green: 189/255, blue: 89/255, alpha: 1.0)
     }
+    
 }

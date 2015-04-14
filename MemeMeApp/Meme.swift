@@ -10,11 +10,16 @@ import Foundation
 import UIKit
 
 struct Meme {
+    
+    // MARK: -
+    // MARK: Properties
     var topText: String!
     var bottomText: String!
     var origImage: UIImage!
     var memedImage: UIImage!
     
+    // MARK: -
+    // MARK: Initializer
     init(topText: String, bottomText: String, origImage: UIImage, memedImage: UIImage) {
         self.topText = topText
         self.bottomText = bottomText

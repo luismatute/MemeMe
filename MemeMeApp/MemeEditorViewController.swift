@@ -29,6 +29,44 @@ class MemeEditorViewController: UIViewController {
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var toolbarCameraButton: UIBarButtonItem!
     @IBOutlet weak var shareButton: UIBarButtonItem!
+    @IBOutlet weak var topToolbar: UIToolbar!
+    @IBOutlet weak var bottomToolbar: UIToolbar!
+
+    // MARK: -
+    // MARK: Actions
+    @IBAction func pickImageFromAlbum(sender: AnyObject) {
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = imagePickerViewDelegate
+        pickerController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        self.presentViewController(pickerController, animated: true, completion: {() in self.shareButton.enabled = true })
+    }
+    @IBAction func pickImageFromCamera(sender: AnyObject) {
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = imagePickerViewDelegate
+        pickerController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        self.presentViewController(pickerController, animated: true, completion: {() in self.shareButton.enabled = true })
+    }
+    @IBAction func shareMeme(sender: AnyObject) {
+        let memedImage = generateMemedImage()
+        let activityVC = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+        
+        activityVC.completionWithItemsHandler = { (activity, success, items, error) in
+            if !success {
+                // Cancelled
+                println("sharing cancelled")
+                return
+            }
+            
+            //Shared Successfully
+            self.save()
+            self.dismissMe()
+        }
+        
+        self.presentViewController(activityVC, animated: true, completion: nil)
+    }
+    @IBAction func dismissModal(sender: AnyObject) {
+        self.dismissMe()
+    }
     
     // MARK: -
     // MARK: View Life Cycle
@@ -68,11 +106,21 @@ class MemeEditorViewController: UIViewController {
         
         // Toolbar Buttons
             self.toolbarCameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
-            self.shareButton.enabled = appDelegate.memes.count > 0
+            self.shareButton.enabled = false
         
         // Setting the self as the viewcontroller for the delegate
             self.imagePickerViewDelegate.vc = self
             self.inputDelegate.vc = self
+    }
+    func subscribeToKeyboardNotification() {
+        // Add observers to default notification center
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+    }
+    func unsubscribeToKeyboardNotification() {
+        // Remove observers from default notification center
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
     }
     func keyboardWillShow(notification: NSNotification) {
         // Check if bottom text label started the notification
@@ -93,33 +141,21 @@ class MemeEditorViewController: UIViewController {
             return 0
         }
     }
-    func subscribeToKeyboardNotification() {
-        // Add observers to default notification center
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
-    }
-    func unsubscribeToKeyboardNotification() {
-        // Remove observers from default notification center
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
-    }
     func generateMemedImage() -> UIImage {
-        // Generates Image combining the image with the top and bottom text
-        
-        // TODO: Hide the toolbar and navbar
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
-        self.navigationController?.setToolbarHidden(true, animated: false)
+        // Hide the toolbar and navbar
+        self.topToolbar.hidden = true
+        self.bottomToolbar.hidden = true
         
         // Render view to image
+        // Generates Image combining the image with the top and bottom text
         UIGraphicsBeginImageContext(self.view.frame.size)
         self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        // TODO: Show the toolbar and navbar
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
-        self.navigationController?.setToolbarHidden(false, animated: false)
-        
+        // Show the toolbar and navbar
+        self.topToolbar.hidden = false
+        self.bottomToolbar.hidden = false
         
         return memedImage
     }
@@ -130,42 +166,8 @@ class MemeEditorViewController: UIViewController {
         // Add it to the memes array from the App Delegate
         appDelegate.memes.append(meme)
     }
-    
-    // MARK: -
-    // MARK: Actions
-    @IBAction func pickImageFromAlbum(sender: AnyObject) {
-        let pickerController = UIImagePickerController()
-        pickerController.delegate = imagePickerViewDelegate
-        pickerController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-        self.presentViewController(pickerController, animated: true, completion: nil)
-    }
-    @IBAction func pickImageFromCamera(sender: AnyObject) {
-        let pickerController = UIImagePickerController()
-        pickerController.delegate = imagePickerViewDelegate
-        pickerController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-        self.presentViewController(pickerController, animated: true, completion: nil)
-    }
-    @IBAction func shareMeme(sender: AnyObject) {
-        let memedImage = generateMemedImage()
-        let activityVC = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
-        
-        activityVC.completionWithItemsHandler = { (activity, success, items, error) in
-            if !success {
-                // Cancelled
-                println("sharing cancelled")
-                return
-            }
-            
-            //Shared Successfully
-            self.save()
-            activityVC.dismissViewControllerAnimated(true, completion: nil)
-        }
-        
-        self.presentViewController(activityVC, animated: true, completion: nil)
-    }
-    @IBAction func dismissModal(sender: AnyObject) {
+    func dismissMe() {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-    
 }
 
