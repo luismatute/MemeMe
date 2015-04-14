@@ -11,6 +11,8 @@ import UIKit
 
 class textInputDelegate: NSObject, UITextFieldDelegate {
     
+    var vc: MemeEditorViewController?
+    
     // Clear the text field if it has the default value
     func textFieldDidBeginEditing(textField: UITextField) {
         if ( textField.text == "TOP" || textField.text == "BOTTOM") {
