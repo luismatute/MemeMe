@@ -13,14 +13,16 @@ struct Meme {
     
     // MARK: -
     // MARK: Properties
-    var topText: String!
-    var bottomText: String!
-    var origImage: UIImage!
-    var memedImage: UIImage!
+    let _id: String!
+    let topText: String!
+    let bottomText: String!
+    let origImage: UIImage!
+    let memedImage: UIImage!
     
     // MARK: -
     // MARK: Initializer
     init(topText: String, bottomText: String, origImage: UIImage, memedImage: UIImage) {
+        self._id = NSUUID().UUIDString // id that will help me remove Memes
         self.topText = topText
         self.bottomText = bottomText
         self.origImage = origImage

@@ -12,6 +12,7 @@ class MemeEditorViewController: UIViewController {
 
     // MARK: -
     // MARK: Properties
+    var meme: Meme!
     let inputDelegate = textInputDelegate()
     let imagePickerViewDelegate = imagePickerDelegate()
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -76,7 +77,7 @@ class MemeEditorViewController: UIViewController {
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.toolbar.translucent = true
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
         self.subscribeToKeyboardNotification()
     }
     override func viewWillDisappear(animated: Bool) {
@@ -104,13 +105,21 @@ class MemeEditorViewController: UIViewController {
             self.topText.borderStyle              = UITextBorderStyle.None
             self.bottomText.borderStyle           = UITextBorderStyle.None
         
+        // If editing a meme
+            if let lememe = self.meme {
+                self.imagePickerView.image = lememe.origImage
+                self.topText.text = lememe.topText
+                self.bottomText.text = lememe.bottomText
+            }
+        
         // Toolbar Buttons
             self.toolbarCameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
-            self.shareButton.enabled = false
+            self.shareButton.enabled = self.imagePickerView.image?.size != nil
         
         // Setting the self as the viewcontroller for the delegate
             self.imagePickerViewDelegate.vc = self
             self.inputDelegate.vc = self
+        
     }
     func subscribeToKeyboardNotification() {
         // Add observers to default notification center
@@ -160,6 +169,12 @@ class MemeEditorViewController: UIViewController {
         return memedImage
     }
     func save() {
+        // if meme exists, delete it
+        if let lememe = self.meme {
+            self.appDelegate.memes = self.appDelegate.memes.filter {$0._id != lememe._id}
+            self.navigationController?.popViewControllerAnimated(false)
+        }
+        
         // Creates the meme
         var meme = Meme(topText: self.topText.text, bottomText: self.bottomText.text, origImage: imagePickerView.image!, memedImage: generateMemedImage())
         

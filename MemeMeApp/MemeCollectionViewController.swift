@@ -28,6 +28,11 @@ class MemeCollectionViewController: UICollectionViewController, UICollectionView
         self.updateMemes()
         self.tabBarController?.tabBar.hidden = false
         self.collectionView?.reloadData()
+        
+        // Setting 3 cells per row
+        let width = CGRectGetWidth(self.collectionView!.frame) / 3
+        let layout = self.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.itemSize = CGSize(width: width, height: width)
     }
     override func viewDidAppear(animated: Bool) {
         if (self.memes.count == 0) {
@@ -43,7 +48,7 @@ class MemeCollectionViewController: UICollectionViewController, UICollectionView
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         // Instantiating Reusable Cell
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("memeContentCell", forIndexPath: indexPath) as! MemeCollectionViewCell
-        
+
         // Get the meme for this row
         let meme = self.memes[indexPath.row]
         
@@ -64,7 +69,20 @@ class MemeCollectionViewController: UICollectionViewController, UICollectionView
         self.navigationController?.pushViewController(memeDetailVC, animated: true)
 
     }
-    
+    override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        let editMI = UIMenuItem(title: "Edit", action: "editAction")
+        UIMenuController.sharedMenuController().menuItems = [editMI]
+        return true
+    }
+    override func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject!) -> Bool {
+        if action == "editAction" { return true }
+        if action == "delete:" { return true }
+        return false
+    }
+    override func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject!) {
+        println("test")
+    }
+
     // MARK: -
     // MARK: Actions
     @IBAction func addMeme(sender: AnyObject) {
@@ -84,5 +102,7 @@ class MemeCollectionViewController: UICollectionViewController, UICollectionView
         // Showing the editorVC
         self.presentViewController(editorVC, animated: true, completion: nil)
     }
-    
+    func editAction() {
+        println("test")
+    }
 }

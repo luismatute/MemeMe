@@ -21,8 +21,9 @@
                                 <rect key="frame" x="0.0" y="20" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.1333333333" green="0.13725490200000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="oWy-RO-rmT">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWy-RO-rmT">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <color key="backgroundColor" red="0.1647058824" green="0.1647058824" blue="0.17254901959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="cue-KM-dgg"/>
                                 </constraints>
@@ -43,9 +44,9 @@
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="VxD-WI-d9p"/>
                                 </items>
-                                <color key="barTintColor" red="0.1333333333" green="0.13725490200000001" blue="0.14901960780000001" alpha="0.65000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="barTintColor" red="0.1333333333" green="0.13725490200000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </toolbar>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1s7-an-mnt">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1s7-an-mnt">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Qcb-ek-yUn"/>
@@ -65,7 +66,7 @@
                                         </connections>
                                     </barButtonItem>
                                 </items>
-                                <color key="barTintColor" red="0.1333333333" green="0.13725490200000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="barTintColor" red="0.1333333333" green="0.13725490200000001" blue="0.14901960780000001" alpha="0.72999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                             </toolbar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a6v-KV-YJk">
                                 <rect key="frame" x="36" y="90" width="528" height="30"/>
@@ -78,7 +79,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.13333333333333333" green="0.13725490196078433" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Eiq-9K-gzu" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="3hf-II-95D"/>
                             <constraint firstItem="4if-p7-w0W" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="20" id="ECu-dD-08t"/>
@@ -121,7 +122,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2462" y="-77"/>
+            <point key="canvasLocation" x="2305" y="810"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="PDf-mU-LDr">
@@ -187,7 +188,7 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ieo-Mb-13D">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -221,7 +222,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="a1L-o7-Eq8">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="a1L-o7-Eq8">
                             <size key="itemSize" width="120" height="120"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -235,8 +236,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nlo-0L-bzp">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nlo-0L-bzp">
                                             <rect key="frame" x="8" y="8" width="104" height="104"/>
+                                            <color key="backgroundColor" red="0.1333333333" green="0.13725490200000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -245,7 +247,11 @@
                                     <constraint firstAttribute="centerX" secondItem="nlo-0L-bzp" secondAttribute="centerX" constant="-0.5" id="4e4-tY-cZi"/>
                                     <constraint firstAttribute="centerX" secondItem="nlo-0L-bzp" secondAttribute="centerX" id="4fu-a5-G0w"/>
                                     <constraint firstAttribute="centerY" secondItem="nlo-0L-bzp" secondAttribute="centerY" constant="0.5" id="Gfi-rg-CCq"/>
+                                    <constraint firstItem="nlo-0L-bzp" firstAttribute="bottom" secondItem="IDy-9c-RHh" secondAttribute="bottomMargin" id="GiN-Qf-yDf"/>
+                                    <constraint firstItem="nlo-0L-bzp" firstAttribute="trailing" secondItem="IDy-9c-RHh" secondAttribute="trailingMargin" id="SDk-gE-550"/>
                                     <constraint firstAttribute="centerY" secondItem="nlo-0L-bzp" secondAttribute="centerY" constant="0.5" id="bbk-fz-b6Q"/>
+                                    <constraint firstItem="nlo-0L-bzp" firstAttribute="top" secondItem="IDy-9c-RHh" secondAttribute="topMargin" id="ukN-lN-GkO"/>
+                                    <constraint firstItem="nlo-0L-bzp" firstAttribute="leading" secondItem="IDy-9c-RHh" secondAttribute="leadingMargin" id="wb8-Dm-kW7"/>
                                 </constraints>
                                 <size key="customSize" width="120" height="120"/>
                                 <variation key="default">
@@ -295,22 +301,46 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.1333333333" green="0.13725490200000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eog-5i-8u4">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem title="Edit" id="vCo-0e-nMn">
+                                        <color key="tintColor" red="0.18039215689999999" green="0.74117647060000003" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="editMeme:" destination="hwj-VN-wAI" id="xYF-RS-Pai"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Azv-9O-7Yp"/>
+                                    <barButtonItem title="Delete" id="ABY-9b-NSQ">
+                                        <color key="tintColor" red="0.18039215689999999" green="0.74117647060000003" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="deleteMeme:" destination="hwj-VN-wAI" id="mz3-r6-iKb"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <color key="barTintColor" red="0.1333333333" green="0.13725490200000001" blue="0.14901960780000001" alpha="0.65000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Oq3-OJ-8DH" firstAttribute="top" secondItem="lwA-IU-Eol" secondAttribute="bottom" constant="-20" id="7Ag-Ok-nrg"/>
                             <constraint firstItem="Oq3-OJ-8DH" firstAttribute="leading" secondItem="okU-jI-seu" secondAttribute="leadingMargin" constant="-16" id="Bb8-WZ-F7u"/>
                             <constraint firstItem="Oq3-OJ-8DH" firstAttribute="width" secondItem="okU-jI-seu" secondAttribute="width" id="biv-J3-3F7"/>
+                            <constraint firstItem="Eog-5i-8u4" firstAttribute="leading" secondItem="okU-jI-seu" secondAttribute="leadingMargin" constant="-16" id="kZL-be-iaG"/>
+                            <constraint firstItem="kcP-ur-WM9" firstAttribute="top" secondItem="Eog-5i-8u4" secondAttribute="bottom" id="kdi-uq-2rB"/>
                             <constraint firstItem="Oq3-OJ-8DH" firstAttribute="height" secondItem="okU-jI-seu" secondAttribute="height" id="pjH-Bb-ifG"/>
+                            <constraint firstItem="Eog-5i-8u4" firstAttribute="width" secondItem="okU-jI-seu" secondAttribute="width" id="zrG-fN-1Bh"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomToolbar" destination="Eog-5i-8u4" id="xQQ-oY-agm"/>
+                        <outlet property="deleteButton" destination="ABY-9b-NSQ" id="Lfg-5g-ynA"/>
                         <outlet property="imageView" destination="Oq3-OJ-8DH" id="5ev-Xg-fu5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1cO-1s-SXB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2462" y="810"/>
+            <point key="canvasLocation" x="2305" y="-77"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Mcy-bY-Qpo">

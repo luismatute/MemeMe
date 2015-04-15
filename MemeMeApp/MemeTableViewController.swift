@@ -14,6 +14,7 @@ class MemeTableViewController: UITableViewController, UITableViewDataSource {
     // MARK: -
     // MARK: Properties
     var memes: [Meme]!
+    var editorMode = false
     let applicationDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     // MARK: -
@@ -21,6 +22,7 @@ class MemeTableViewController: UITableViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updateMemes()
+        // setting icons tint for the tab bar
         self.tabBarController?.tabBar.tintColor = UIColor(red: 46/255, green: 189/255, blue: 89/255, alpha: 1.0)
     }
     override func viewWillAppear(animated: Bool) {
@@ -51,6 +53,7 @@ class MemeTableViewController: UITableViewController, UITableViewDataSource {
         // Set the cell properties
         cell.imageView?.image = meme.memedImage
         cell.textLabel!.text = "\(meme.topText) - \(meme.bottomText)"
+        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
 
         // Return the cell
         return cell
@@ -64,6 +67,21 @@ class MemeTableViewController: UITableViewController, UITableViewDataSource {
         
         // Pushing the memeDetailVC to the navigation stack
         self.navigationController?.pushViewController(memeDetailVC, animated: true)
+    }
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {}
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+        var editAction = UITableViewRowAction(style: .Normal, title: "Edit", handler: {(action, indexPath) in
+            let editorVC = self.storyboard?.instantiateViewControllerWithIdentifier("editorVC") as! MemeEditorViewController
+            editorVC.meme = self.memes[indexPath.row]
+            self.presentViewController(editorVC, animated: true, completion: nil)
+        })
+        var deleteAction = UITableViewRowAction(style: .Default, title: "Delete", handler: {(action, indexPath) in
+            self.memes.removeAtIndex(indexPath.row)
+            self.applicationDelegate.memes = self.memes
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        })
+        
+        return [deleteAction,editAction]
     }
     
     // MARK: -

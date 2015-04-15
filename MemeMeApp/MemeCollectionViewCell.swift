@@ -13,5 +13,16 @@ class MemeCollectionViewCell: UICollectionViewCell {
     // MARK: -
     // MARK: Outlets
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var deleteButton: UIButton!
+    
+    override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
+        println(action)
+        if action == "editAction" { return true }
+        if action == "delete:" { return true }
+        return false
+    }
+    override func canBecomeFirstResponder() -> Bool {
+        return true
+    }
     
 }
