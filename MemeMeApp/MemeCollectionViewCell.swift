@@ -25,7 +25,6 @@ class MemeCollectionViewCell: UICollectionViewCell {
     // MARK: -
     // MARK: Class Methods
     override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
-        println(action)
         if action == "editAction:" { return true }
         if action == "deleteAction:" { return true }
         return false
