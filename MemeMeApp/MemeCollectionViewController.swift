@@ -54,6 +54,9 @@ class MemeCollectionViewController: UICollectionViewController, UICollectionView
         
         // Set the cell properties
         cell.imageView?.image = meme.memedImage
+        cell._id = meme._id
+        cell.meme = meme
+        cell.vc = self
         
         // Return the cell
         return cell
@@ -70,18 +73,15 @@ class MemeCollectionViewController: UICollectionViewController, UICollectionView
 
     }
     override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        let editMI = UIMenuItem(title: "Edit", action: "editAction")
-        UIMenuController.sharedMenuController().menuItems = [editMI]
+        let editMI = UIMenuItem(title: "Edit", action: "editAction:")
+        let deleteMI = UIMenuItem(title: "Delete", action: "deleteAction:")
+        UIMenuController.sharedMenuController().menuItems = [deleteMI,editMI]
         return true
     }
     override func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject!) -> Bool {
-        if action == "editAction" { return true }
-        if action == "delete:" { return true }
-        return false
+        return true
     }
-    override func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject!) {
-        println("test")
-    }
+    override func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject!) {}
 
     // MARK: -
     // MARK: Actions
@@ -102,7 +102,5 @@ class MemeCollectionViewController: UICollectionViewController, UICollectionView
         // Showing the editorVC
         self.presentViewController(editorVC, animated: true, completion: nil)
     }
-    func editAction() {
-        println("test")
-    }
+    
 }
